@@ -1,8 +1,6 @@
 import random
 import dataset
 
-print(len(dataset.ListaRegiones))
-
 def PreguntasRegion():
     listaRandomRegion = [""]
     for i in range(4):
@@ -29,23 +27,6 @@ def PreguntasRegion():
                 if ListaDepartamentos[RANDOM].Region != ListaDepartamentos[a].Region:
                     ListaDepartamentos[a].Probabilidad+=1   
 
-# def PreguntasRegion():
-#     listaRandom = []
-#     for i in range(4):
-#         RANDOM = RANDOMNUMERONUEVO(listaRandom)
-#         print(dataset.PREGUNTA.Region + ListaDepartamentos[RANDOM].Region)
-#         print("1) Sí  2) No")
-#         Respuesta = int(input("Respuesta: "))
-#         if Respuesta == 1:
-#             for a in range(len(ListaDepartamentos)):
-#                 if ListaDepartamentos[RANDOM].Region == ListaDepartamentos[a].Region:
-#                     ListaDepartamentos[a].Probabilidad+=1
-#         else:
-#             for a in range(len(ListaDepartamentos)):
-#                 if ListaDepartamentos[RANDOM].Region != ListaDepartamentos[a].Region:
-#                     ListaDepartamentos[a].Probabilidad+=1   
-
-
 def PreguntasLengua():
     listaRandomLenguas = [""]
     for x in range(4):
@@ -67,6 +48,8 @@ def PreguntasLengua():
                 listaRandomLenguas.append(ListaDepartamentos[RANDOM].Lenguas[RANDOMLENGUA])
                 # print("El objeto no esta en la lista")
                 listo=False
+        if contador >= 20:
+            break
         print(dataset.PREGUNTA.Lengua + ListaDepartamentos[RANDOM].Lenguas[RANDOMLENGUA])
         print("1) Sí  2) No")
         Respuesta = int(input("Respuesta: "))
@@ -93,7 +76,6 @@ def PregutnasComidas():
             contador+=1
             if contador>20:
                 listo = False
-                break
             if ListaDepartamentos[RANDOM].Comidas in listaRandomComidas:
                 # print("el objeto ya"" esta en la lista")
                 RANDOM =random.randrange(len(ListaDepartamentos))
@@ -101,6 +83,8 @@ def PregutnasComidas():
                 listaRandomComidas.append(ListaDepartamentos[RANDOM].Comidas)
                 # print("El objeto no esta en la lista")
                 listo=False
+        if contador >= 20:
+            break
         print(dataset.PREGUNTA.Comida + ListaDepartamentos[RANDOM].Comidas)
         print("1) Sí  2) No")
         Respuesta = int(input("Respuesta: "))
@@ -133,31 +117,12 @@ def PreguntasLugares():
         if Respuesta == 1:
             # print("5 mas para "+ListaDepartamentos[RANDOM].Nombre+" Por: "+ListaDepartamentos[RANDOM].Lugares[RANDOMLUGAR])
             ListaDepartamentos[RANDOM].Probabilidad+=10
+            break
         else:
             for z in range(len(ListaDepartamentos)):
                 # print("1 mas para "+ListaDepartamentos[z].Nombre+" Por no tener: "+ListaDepartamentos[RANDOM].Lugares[RANDOMLUGAR])
                 if ListaDepartamentos[RANDOM].Nombre != ListaDepartamentos[z].Nombre:
                     ListaDepartamentos[z].Probabilidad+=1
-# def PreguntasRegion():
-#     for i in range(4):
-#         RegionRandom = random.randrange(len(dataset.ListaRegiones))
-#         print(dataset.PREGUNTA.Region + dataset.ListaRegiones[RegionRandom].Nombre)
-#         print("1) Sí  2) No")
-#         Respuesta = int(input("Respuesta: "))
-#         if Respuesta == 1:
-#             #print("Departamentos en esta region: "+str(len(ListaRegiones[RegionRandom].Departamentos)))
-#             for i in range(len(dataset.ListaRegiones[RegionRandom].Departamentos)):
-#                 dataset.ListaDepartamentos[dataset.ListaRegiones[RegionRandom].DepOnID[i]].Probabilidad+=1
-#                 #print("+1 a "+ ListaDepartamentos[ListaRegiones[RegionRandom].DepOnID[i]].Nombre)
-#         else:
-#             for e in range(len(dataset.ListaRegiones)): 
-#                 #print("ciclo : "+str(e) +" "+ ListaRegiones[e].Nombre)
-#                 if e != RegionRandom:
-#                     for a in range(len(dataset.ListaRegiones[e].Departamentos)):
-#                         dataset.ListaDepartamentos[dataset.ListaRegiones[e].DepOnID[a]].Probabilidad+=1
-#                         #print("     ciclo interno: "+str(a))
-#                         #print("     deptOnID : "+str(ListaRegiones[e].DepOnID[a]))
-#                         #print("+1 a "+ ListaDepartamentos[ListaRegiones[e].DepOnID[a]].Nombre)
 
 def PROMEDIO():
     Promedio = 0
@@ -181,23 +146,9 @@ def PROMEDIO():
             x+=1
             # print(str(x)+" no eliminado")
 
-# for i in range(0,10):
-#     NumRandom = random.randrange(len(dataset.ListaLenguas))
-#     print(str(NumRandom) +" "+dataset.PREGUNTA.Lengua + dataset.ListaLenguas[NumRandom].Nombre)
-#     print("1) Sí  2) No")
-#     Respuesta = int(input("Respuesta: "))
-#     if Respuesta == 1:
-#         #Si
-#         for a in range(len(dataset.ListaLenguas[NumRandom].Departamentos)):
-#             dataset.ListaDepartamentos[dataset.ListaLenguas[NumRandom].DepOnID[a]].Probabilidad+=1
-#     else:
-#         # for e in range(len(dataset.ListaLenguas[NumRandom].Departamentos)):
-#         #     for i in range(dataset.ListaDepartamentos):
-#         #         if dataset.ListaLenguas[NumRandom].Departamentos[i] == dataset.ListaLenguas[NumRandom].Departamentos[]
-#         print("else")
-#         #No
  
-#PROMEDIO
+
+#INICIO ALGORITMO
 ListaDepartamentos = dataset.ListaDepartamentos
 
 PreguntasRegion()
@@ -209,10 +160,6 @@ PROMEDIO
 PreguntasLugares()
 PROMEDIO()
 
-# for x in range(len(ListaDepartamentos)):
-#     print(str(x) + ":  "+ListaDepartamentos[x].Nombre + " pr: "+str(ListaDepartamentos[x].Probabilidad))
-# print("Tu departamento es: "+ListaDepartamentos[0].Nombre)
-
 maxnum = 0
 maxDep = 0
 for a in range(len(ListaDepartamentos)):
@@ -222,19 +169,4 @@ for a in range(len(ListaDepartamentos)):
 
 print("Tu departamento es: "+ListaDepartamentos[max].Nombre)
 
-# for x in range (len(dataset.ListaDepartamentos)):
-#     print(dataset.ListaDepartamentos[x].Nombre + " " + str(dataset.ListaDepartamentos[x].Probabilidad))
-
-# # del ListaLocal[0]
-# # del ListaLocal[1]
-# PROMEDIO()         
-
-
-# for x in range (len(dataset.ListaDepartamentos)):
-#     print(dataset.ListaDepartamentos[x].Nombre + " " + str(dataset.ListaDepartamentos[x].Probabilidad))
-
-#PREGUNTA CON 
-
-# listaRandom.append(3)
-# listaRandom.append(10)
-# print(listaRandom)
+#FIN ALGORITMO
